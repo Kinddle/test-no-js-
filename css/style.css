@@ -5,9 +5,6 @@ body {
   font-size: 14px;
   font-family: 'Open Sans', sans-serif;
 }
-/*p {
-  margin: 0;
-}*/
 h6 {
   font: 14px;
 }
@@ -202,7 +199,7 @@ h4 {
   padding-left: 0;
   list-style: none;
 }
-input[type="checkbox"],
+/*input[type="checkbox"],
 input[type="radio"] {
     display:none;
 }
@@ -250,112 +247,193 @@ input[type="radio"]:disabled + label::before {
 }
 input[type="radio"]:checked:disabled + label::before {
     background-position: -162px -279px;
+}*/
+
+#demo {
+    height: 100%;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    display: -webkit-box;
+  }
+
+#demo .wrapper {
+    display: inline-block;
+    margin: 0 30px 0 0;
+    height: 33px;
+    position: relative;
 }
 
-.navigation {
-  width:100%;
+#demo .parent {
   height: 100%;
-  padding: 10px 0;
-}
-.navigation ul {
-	position:relative;
-  z-index:1000;
-  list-style:none;
-  -webkit-box-align: center;
-  -webkit-box-pack: center;
-  display: -webkit-box;
-  padding:0;
-  margin: 0;
-  font-weight: normal;
-  font-size: 14px;
+  width: 100%;
+  display: block;
+  cursor: pointer;
+  line-height: 33px;
+  height: 33px;
+  background: transparent;
+  color: #8a8a8a;
+  font-weight: bold;
+  z-index: 2;
+  position: relative;
+  -webkit-transition-delay: .8s;
+  text-align: center;
 }
 
-        /* we're using the direct descendant selectors > to ONLY affect the main menu items */
-        .navigation > ul > li {
-        /* positioning */
-            position: relative;
-            float: left;
-        /* styling: */
-            margin-right: 10px;
-        }
-.navigation > ul > li > a {
-    display:block;
-    background-color: transparent;
-    padding:8px 14px;
-    text-decoration:none;
-    color:#7e7e7e;
+  #demo .parent:hover,
+  #demo .content:hover ~ .parent {
+      background: #fff;
+      -webkit-transition-delay: 0s, 0s, 0s;
+  }
 
-}
-.navigation > ul > li > a:hover{
-    background-color:transparent;
-    color:#000000;
-}
-.navigation ul ul{
+  #demo .content:hover ~ .parent {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      z-index: 0;
+  }
 
-    background-color:#eaeaea;
-    width:100px;
+  #demo .content {
+      position: absolute;
+      top: 0;
+      display: block;
+      z-index: 1;
+      height: 0;
+      width: inherit;
+      padding-top: 33px;
+      -webkit-transition: height .5s ease;
+      -webkit-transition-delay: .4s;
+      width: 180px;
+  }
+
+  #demo .wrapper:active .content {
+      height: 123px;
+      z-index: 3;
+      -webkit-transition-delay: 0s;
+  }
+
+  #demo .content:hover {
+      height: 123px;
+      z-index: 3;
+      -webkit-transition-delay: 0s;
+  }
+
+
+  #demo .content ul {
+      background: #fff;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+  }
+
+  #demo .content ul a {
+      text-decoration: none;
+  }
+
+  #demo .content li:hover {
+      background: #eee;
+      color: #333;
+  }
+
+  #demo .content li {
+      list-style: none;
+      text-align: left;
+      color: #888;
+      font-size: 14px;
+      line-height: 30px;
+      height: 30px;
+      padding-left: 10px;
+      border-top: 1px solid #ccc;
+  }
+
+  #demo .content li:last-of-type {
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+  }
+  .hidden-xs {
     display: block;
-    position:absolute;
-    z-index:100;
-    height: 0;
-    top: 46px;
-    overflow: hidden;
-    -webkit-transition: height 0.3s ease-in;
-    -moz-transition: height 0.3s ease-in;
-    -o-transition: height 0.3s ease-in;
-    -ms-transition: height 0.3s ease-in;
-    transition: height 0.3s ease-in;
-}
-
-  .navigation > ul > li:hover ul ul, .navigation > ul > li > a:hover ul ul{
-      height:0;
-
   }
-  .navigation ul ul ul{
-      left:170px;
-      width:170px;
-  }
-
-.navigation > ul > li:hover ul, .navigation > ul > li > a:hover ul,
-.navigation ul ul li:hover > ul, .navigation ul ul li a:hover > ul{
-    height:inherit;
+.accordion {
+  padding:10px 0;
 }
-.navigation ul ul li{
-    background-color:#eaeaea; /* grey */
-    width:100%;
-    -webkit-transition: background-color 0.3s ease;
-    -moz-transition: background-color 0.3s ease;
-    -o-transition: background-color 0.3s ease;
-    -ms-transition: background-color 0.3s ease;
-    transition: background-color 0.3s ease;
+.accordion ul {
+    list-style:none;
+    margin:0;
+    padding:0;
 }
-.navigation ul ul li:hover {
-    background-color:#999;
+.accordion li {
+    margin:0;
+    padding:0;
 }
-
-.navigation ul ul li a {
+.accordion [type=radio], .accordion [type=checkbox] {
+    display:none;
+}
+.accordion label {
     display:block;
-    text-decoration:none;
-    margin:0 12px;
-    padding:5px 0;
-    color:#4c4c4c;
+    font-size:16px;
+    line-height:16px;
+    font-weight:normal;
+    cursor:pointer;
+    text-transform:uppercase;
 }
-.navigation ul ul li a:hover, .navigation ul ul li:hover > a {
-    color:#ffffff;
+.accordion ul li label:hover, .accordion [type=radio]:checked ~ label, .accordion [type=checkbox]:checked ~ label {
+    background: transparent;
+    color: #8a8a8a;
+    outline: none;
 }
-.navigation ul ul li:hover + li a{
-    border-top:1px solid #eaeaea;
+.accordion .content {
+    padding:0 10px;
+    overflow:hidden;
+    border:1px solid #fff;
+    -webkit-transition: all .5s ease-out;
+    -moz-transition: all .5s ease-out;
 }
-.navigation ul ul ul li:hover + li a{
-    border: 0 !important;
+.vertical ul li {
+    overflow:hidden;
+    margin:0 0 1px;
 }
-.navigation ul ul ul li:hover + li{
-    border-top:1px solid #999 !important;
+.vertical ul li label {
+    padding:10px;
+}
+.vertical ul li .content {
+    height:0px;
+    border-top:0;
+    transition: all .5s ease-out;
+}
+.vertical [type=checkbox]:checked ~ label ~ .content {
+    height:100%;
+}
+.accordion .content ul {
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
 }
 
+.accordion .content ul a {
+    text-decoration: none;
+    line-height: 33px;
+}
+
+.accordion .content li:hover {
+    background: #eee;
+    color: #333;
+}
+
+.visible-xs-only {
+  display: none;
+}
 @media (min-width: 320px) and (max-width: 767px){
   .container {
     padding: 0 15px;
+  }
+  .visible-xs-only {
+    display: block;
+  }
+  .hidden-xs {
+    display: none !important;
   }
   .main-content .images {
     padding-left: 0;
@@ -413,6 +491,7 @@ input[type="radio"]:checked:disabled + label::before {
     float: left;
   }
 }
+
 @media (min-width: 992px) {
   .container {
     width: 970px;
