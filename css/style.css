@@ -44,6 +44,7 @@ h4 {
 .top-bar li {
   display: inline-block;
   float: left;
+  height: 68px;
 }
 .text-center {
   text-align: center;
@@ -67,9 +68,6 @@ h4 {
   margin: 0;
   line-height: 16px;
   font-weight: 300;
-}
-.top-bar li {
-  height: 68px;
 }
 .service-icon, .service {
   display: table-cell;
@@ -109,7 +107,7 @@ h4 {
   margin: 0 15% 0 30px;
   padding: 0;
 }
-.navbar {
+/*.navbar {
   text-align: center;
 }
 .navbar ul {
@@ -122,8 +120,8 @@ h4 {
 .navbar ul li {
   float: left;
   padding-top: 4px;
-}
-
+}*/
+/*
 .navbar li a {
   color: #7e7e7e;
   text-align: center;
@@ -133,10 +131,10 @@ h4 {
   text-decoration: none;
   display:table-cell;
   vertical-align:middle;
-}
-.navbar ul li a:hover:not(.active) {color: #000000;}
+}*/
+/*.navbar ul li a:hover:not(.active) {color: #000000;}
 
-.navbar ul li a.active {color: #000000;}
+.navbar ul li a.active {color: #000000;}*/
 
 .main-content ul {
   list-style-type: square;
@@ -254,6 +252,107 @@ input[type="radio"]:checked:disabled + label::before {
     background-position: -162px -279px;
 }
 
+.navigation {
+  width:100%;
+  height: 100%;
+  padding: 10px 0;
+}
+.navigation ul {
+	position:relative;
+  z-index:1000;
+  list-style:none;
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
+  display: -webkit-box;
+  padding:0;
+  margin: 0;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+        /* we're using the direct descendant selectors > to ONLY affect the main menu items */
+        .navigation > ul > li {
+        /* positioning */
+            position: relative;
+            float: left;
+        /* styling: */
+            margin-right: 10px;
+        }
+.navigation > ul > li > a {
+    display:block;
+    background-color: transparent;
+    padding:8px 14px;
+    text-decoration:none;
+    color:#7e7e7e;
+
+}
+.navigation > ul > li > a:hover{
+    background-color:transparent;
+    color:#000000;
+}
+.navigation ul ul{
+
+    background-color:#eaeaea;
+    width:100px;
+    display: block;
+    position:absolute;
+    z-index:100;
+    height: 0;
+    top: 46px;
+    overflow: hidden;
+    -webkit-transition: height 0.3s ease-in;
+    -moz-transition: height 0.3s ease-in;
+    -o-transition: height 0.3s ease-in;
+    -ms-transition: height 0.3s ease-in;
+    transition: height 0.3s ease-in;
+}
+
+  .navigation > ul > li:hover ul ul, .navigation > ul > li > a:hover ul ul{
+      height:0;
+
+  }
+  .navigation ul ul ul{
+      left:170px;
+      width:170px;
+  }
+
+.navigation > ul > li:hover ul, .navigation > ul > li > a:hover ul,
+.navigation ul ul li:hover > ul, .navigation ul ul li a:hover > ul{
+    height:inherit;
+}
+.navigation ul ul li{
+    background-color:#eaeaea; /* grey */
+    width:100%;
+    -webkit-transition: background-color 0.3s ease;
+    -moz-transition: background-color 0.3s ease;
+    -o-transition: background-color 0.3s ease;
+    -ms-transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease;
+}
+.navigation ul ul li:hover {
+    background-color:#999;
+}
+
+.navigation ul ul li a {
+    display:block;
+    text-decoration:none;
+    margin:0 12px;
+    padding:5px 0;
+    color:#4c4c4c;
+}
+.navigation ul ul li a:hover, .navigation ul ul li:hover > a {
+    color:#ffffff;
+}
+.navigation ul ul li:hover + li a{
+    border-top:1px solid #eaeaea;
+}
+.navigation ul ul ul li:hover + li a{
+    border: 0 !important;
+}
+.navigation ul ul ul li:hover + li{
+    border-top:1px solid #999 !important;
+}
+
 @media (min-width: 320px) and (max-width: 767px){
   .container {
     padding: 0 15px;
@@ -262,6 +361,9 @@ input[type="radio"]:checked:disabled + label::before {
     padding-left: 0;
     margin-left: 0;
     width: 100%;
+  }
+  .top-bar ul li {
+    padding-left: 0;
   }
   .box-big {
     padding: 30px 0;
@@ -319,5 +421,8 @@ input[type="radio"]:checked:disabled + label::before {
 @media (min-width: 1200px) {
   .container {
     width: 1268px;
+  }
+  .top-bar .service-icon {
+    padding-left: 95px;
   }
 }
